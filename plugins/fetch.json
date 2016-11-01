@@ -161,9 +161,8 @@
     },
     "com-badrit-macaddress": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/mohamed-salah/MacAddress.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "com-badrit-macaddress@~0.2.0"
         },
         "is_top_level": true,
         "variables": {}
