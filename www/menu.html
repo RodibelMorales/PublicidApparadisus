@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--Estilos reset para navegadores-->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <!--Estilos custom para sustituir estilos de materialize-->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Paradisus</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Model: '    + device.model    + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+    }
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logoletras"><img src="img/letras-paradisus.png" class="imgLetras"></div>
+    </header>
+    <section>
+      <div id="carousel-publicidad" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-publicidad" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-publicidad" data-slide-to="1"></li>
+          <li data-target="#carousel-publicidad" data-slide-to="2"></li>
+          <li data-target="#carousel-publicidad" data-slide-to="3"></li>
+        </ol>
+        <!-- Items -->
+        <div class="carousel-inner" role="listbox">
+          <!-- Item 1 -->
+          <div class="item active" data-duration="12000">
+            <img src="promos/promo1.png" class="imgPromos" />
+          </div>
+          <!-- Item 2 -->
+          <div class="item" data-duration="12000">
+            <img src="promos/promo2.png" class="imgPromos" />
+
+          </div>
+          <!-- Item 3 -->
+          <div class="item" data-duration="12000">
+            <img src="promos/promo3.png" class="imgPromos" />
+          </div>
+          <!-- Item 4 -->
+          <div class="item" data-duration="12000">
+            <img src="promos/promo4.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo5.png" class="imgPromos" />
+          </div>         
+          <div class="item" data-duration="12000">
+            <img src="promos/promo6.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo7.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo8.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo9.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo10.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo11.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo12.jpg" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo13.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo14.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo15.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo16.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo17.png" class="imgPromos" />
+          </div>
+          <div class="item" data-duration="12000">
+            <img src="promos/promo18.png" class="imgPromos" />
+          </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-publicidad" data-slide="prev">
+          <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-publicidad" data-slide="next">
+          <span class="icon-next"></span>
+        </a>
+
+      </div>
+
+    </section>
+    <footer id="deviceProperties"></footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/control_events.js"></script>
+
+</body>
+</html>

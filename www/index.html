@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--Estilos reset para navegadores-->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <!--Estilos custom para sustituir estilos de materialize-->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Paradisus</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Model: '    + device.model    + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+    }
+    </script>
+	</head>
+	<body>
+		<div class="container fondoLogin">
+			<div class="row filaLogin">
+				<div class="logotipoLogin">
+					<img class="imgLogotipo" src="img/logo-pdc-login.png">
+				</div>
+				<div class="loading">
+					
+				</div>
+	  		</div>
+      	</div>
+      	<footer id="deviceProperties"></footer>
+	    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <script src="js/jquery.mobile.custom.min.js"></script>
+	    <script src="js/control_events.js"></script>
+	</body>
+	</html>
