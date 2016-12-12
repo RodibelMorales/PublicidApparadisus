@@ -3,133 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--Estilos reset para navegadores-->
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <!--Estilos custom para sustituir estilos de materialize-->
     <link rel="stylesheet" href="css/style.css">
     <title>Paradisus</title>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
 
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        var element = document.getElementById('deviceProperties');
-        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
-                            'Device Model: '    + device.model    + '<br />' +
-                            'Device Cordova: '  + device.cordova  + '<br />' +
-                            'Device Platforma: ' + device.platform + '<br />' +
-                            'Device UUID: '     + device.uuid     + '<br />' +
-                            'Device Version: '  + device.version  + '<br />'+
-                            'Device Version: '  + MacAddress  + '<br />';
-        window.MacAddress.getMacAddress(
-          function(MacAddress){
-            alert(MacAddress);
-          },
-          function(fail){
-            alert(fail);
-          }
-        );
-    }
-
-    </script>
 </head>
 <body>
     <header>
-        <div class="logoletras"><img src="img/letras-paradisus.png" class="imgLetras"></div>
+        <div class="logoletras">
+        <a href="index.html" id="removelocal">Cerrar sessión</a>
+          <img src="img/letras-paradisus.png" class="imgLetras"></div>
     </header>
-    <section>
-      <div id="carousel-publicidad" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-publicidad" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-publicidad" data-slide-to="1"></li>
-          <li data-target="#carousel-publicidad" data-slide-to="2"></li>
-          <li data-target="#carousel-publicidad" data-slide-to="3"></li>
-        </ol>
-        <!-- Items -->
-        <div class="carousel-inner" role="listbox">
-          <!-- Item 1 -->
-          <div class="item active" data-duration="12000">
-            <img src="promos/promo1.png" class="imgPromos" />
-          </div>
-          <!-- Item 2 -->
-          <div class="item" data-duration="12000">
-            <img src="promos/promo2.png" class="imgPromos" />
-
-          </div>
-          <!-- Item 3 -->
-          <div class="item" data-duration="12000">
-            <img src="promos/promo3.png" class="imgPromos" />
-          </div>
-          <!-- Item 4 -->
-          <div class="item" data-duration="12000">
-            <img src="promos/promo4.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo5.png" class="imgPromos" />
-          </div>         
-          <div class="item" data-duration="12000">
-            <img src="promos/promo6.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo7.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo8.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo9.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo10.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo11.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo12.jpg" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo13.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo14.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo15.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo16.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo17.png" class="imgPromos" />
-          </div>
-          <div class="item" data-duration="12000">
-            <img src="promos/promo18.png" class="imgPromos" />
-          </div>
+    <section  id="datacontent">
+        <div id='carousel-publicidad' class='carousel slide' data-ride='carousel'>
+            <div class='carousel-inner' role='listbox' id="data">
+            </div>
+            <a class='left carousel-control' href='#carousel-publicidad' data-slide='prev'><span class='icon-prev'></span></a>
+            <a class='right carousel-control' href='#carousel-publicidad' data-slide='next'><span class='icon-next'></span></a>
         </div>
-        <a class="left carousel-control" href="#carousel-publicidad" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-publicidad" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
-
-      </div>
-
     </section>
-    <footer id="deviceProperties"></footer>
-
+    <div id="hora"></div>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/jquery.mobile.custom.min.js"></script>
     <script src="js/control_events.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!--<script src="js/fancywebsocket.js"></script>-->
+    <script type="text/javascript">
 
+      
+      app.initialize();
+      //Funciones Temporales
+      var fecha=null;
+
+      $("#removelocal").click(function(){
+        localStorage.clear();
+        alert("limpio");
+      });
+      $("#datacontent").addClass("json"+localStorage.getItem("MacIOS")+"");
+      //Generar Info
+      $(document).ready(function(){
+        $('#carousel-publicidad').carousel()
+        //checkAreaId();
+        setTimeout('checkAreaId()',1000);
+        setInterval('actualizaDom()',3000);
+
+      }); 
+          var urlServer="http://10.0.0.24/"; //Url del servidor
+          //Ajax que envia la peticon cada que se abra la pagina
+          //Setinterval para verificar si hay cambios en la base de datos
+          //var inicio =setTimeout(checkAreaId,1000);
+          
+          function checkAreaId(){
+            var macDispositivo =localStorage.getItem("MacIOS");
+              $.ajax({
+                type: "POST",
+                url: urlServer+"serverApparadisus/getData/checkInfo.php",
+                data: "macDispositivo="+macDispositivo,
+                dataType:"html",
+                success: function(data) 
+                {
+                    var infoJson=JSON.parse(data); //parseo la informacion
+                    var mac = infoJson[0].mac;
+                    var areaDevice = infoJson[0].area_id;
+                    var dataSend={
+                      "areaDevice":areaDevice,
+                      "fecha"    :fecha
+                    }
+                    //If que se ejecuta cuando carga la aplicacion y trae datos por default
+                    if (areaDevice==1) {
+                      /*Ajax para la peticion de informacion general*/
+                      $.ajax({
+                        async:  true,
+                        type: "POST",
+                        url: urlServer+"serverApparadisus/getData/checkMultimedia.php",
+                        data: dataSend,
+                        dataType:"html",
+                        success: function(data){
+                          var jm=JSON.parse(data);
+                          var fechadb= jm.agregado;
+                          var id_paquete=jm.id_paquetete;
+                          var lastupdate =localStorage.getItem("update");
+                          //Si no existe registro de hora se crea uno
+                          if(localStorage.getItem("update")===null){
+                            window.localStorage.setItem("update",fechadb);
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+localStorage.getItem("Area"),
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
+                          }else{
+                          //Si existe el item update se busca la info y a lo ultimo se actualiza la fecha de update
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+areaDevice,
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
+                          }
+                        }
+                      });
+                      /*Finaliza ajax*/
+                    }else{
+                      /*Ajax para la peticion de informacion general*/
+                      $.ajax({
+                        async:  true,
+                        type: "POST",
+                        url: urlServer+"serverApparadisus/getData/checkMultimedia.php",
+                        data: dataSend,
+                        dataType:"html",
+                        success: function(data){
+                          var jm=JSON.parse(data);
+                          var fechadb= jm.agregado;
+                          var id_paquete=jm.id_paquetete;
+                          var lastupdate =localStorage.getItem("update");
+                          //Si no existe registro de hora se crea uno
+                          if(localStorage.getItem("update")===null){
+                            window.localStorage.setItem("update",fechadb);
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+localStorage.getItem("Area"),
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
+                          }else{
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+localStorage.getItem("Area",areaDevice),
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
+                          }
+                        }
+                      });
+                    }
+                }
+              });
+          };
+
+          function actualizaDom(){
+            var macDispositivo =localStorage.getItem("MacIOS");
+            var lastupdate =localStorage.getItem("update");
+              $.ajax({
+                type: "POST",
+                url: urlServer+"serverApparadisus/getData/checkInfo.php",
+                data: "macDispositivo="+macDispositivo,
+                dataType:"html",
+                success: function(data) 
+                {
+                    var infoJson=JSON.parse(data); //parseo la informacion
+                    var mac = infoJson[0].mac;
+                    var areaDevice = infoJson[0].area_id;
+                    var dataSend={"areaDevice":areaDevice,"fecha":fecha} //Info de la base de datos
+                    var localdatasend={"areaDevice":"1","fecha":fecha}
+                    var areaLocalstorage= localStorage.getItem("Area");
+                    //Verifico si el area en localstorage es igual al de la DB
+                    if(areaDevice==areaLocalstorage){
+                    }else{
+                      //Elimino area por default
+                      window.localStorage.removeItem("Area");
+                      //Creo nuevamente el area con el dato de la base de datos
+                      window.localStorage.setItem("Area",areaDevice);
+                      location.reload();
+                    }
+                    if (areaDevice==1) {
+                        /*Ajax Verificar si hay cambios en la tabla multimedia*/
+                        $.ajax({
+                          async:  true,
+                          type: "POST",
+                          url: urlServer+"serverApparadisus/getData/checkMultimedia.php",
+                          data: dataSend,
+                          dataType:"html",
+                          success: function(data){
+                            var jm=JSON.parse(data);
+                            var fechadb= jm.agregado;
+                            var id_paquete=jm.id_paquetete;
+                            //Si no existe registro de hora se crea uno
+                            if(localStorage.getItem("update")===null){
+                                window.localStorage.setItem("update");
+                            }else{}
+
+
+                            if(fechadb>lastupdate){
+                              $.ajax({
+                                async:true,
+                                type: "POST",
+                                url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                                data:"areaDevice="+localStorage.getItem("Area"),
+                                dataType:"html",
+                                success:function(data){
+                                  //Agremos Elementos al slider
+                                  $("#data").html(data);
+
+                                  //Elimino la fecha y hora anterior 
+                                  window.localStorage.removeItem("update");
+                                  //Agrego nuevamente la hora del ultimo registro
+                                  window.localStorage.setItem("update",fechadb);
+                                  console.log("Actualizacion Realizada");
+                                  location.reload();
+                                }
+                              });
+                            }else{
+                              console.log("sin cambios el area es la default");
+                            }
+                            
+                          }
+                        });
+                    }else{
+                        $.ajax({
+                          async:  true,
+                          type: "POST",
+                          url: urlServer+"serverApparadisus/getData/checkMultimedia.php",
+                          data: dataSend,
+                          dataType:"html",
+                          success: function(data){
+                            var jm=JSON.parse(data);
+                            var fechadb= jm.agregado;
+                            var id_paquete=jm.id_paquetete;
+                            //Si no existe registro de hora se crea uno
+                            if(localStorage.getItem("update")===null){
+                                window.localStorage.setItem("update",fechadb);
+                            }else{}
+
+                            
+                            if(fechadb>lastupdate){
+                              $.ajax({
+                                async:true,
+                                type: "POST",
+                                url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                                data:"areaDevice="+localStorage.getItem("Area"),
+                                dataType:"html",
+                                success:function(data){
+                                  //Agremos Elementos al slider
+                                  $("#data").html(data);
+                                  //Elimino la fecha y hora anterior 
+                                  window.localStorage.removeItem("update");
+                                  //Agrego nuevamente la hora del ultimo registro
+                                  window.localStorage.setItem("update",fechadb);
+                                  console.log("Actualizacion detectada");
+                                  location.reload();
+                                }
+                              });
+
+                              
+                            }else{
+                              console.log("sin cambios usando set interval");
+                            }
+                            
+                          }
+                        });
+                    }
+
+                }
+              });
+
+          }
+
+    </script>
 </body>
 </html>

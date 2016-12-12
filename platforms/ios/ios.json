@@ -1,0 +1,55 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"MacAddressPlugin\"><param name=\"ios-package\" value=\"MacAddressPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"networkinterface\"><param name=\"ios-package\" onload=\"true\" value=\"CDVNetworkInterface\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com-badrit-macaddress": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-networkinterface": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "com-badrit-macaddress.MacAddress",
+            "file": "plugins/com-badrit-macaddress/www/MacAddress.js",
+            "pluginId": "com-badrit-macaddress",
+            "clobbers": [
+                "window.MacAddress"
+            ]
+        },
+        {
+            "id": "cordova-plugin-networkinterface.networkinterface",
+            "file": "plugins/cordova-plugin-networkinterface/www/networkinterface.js",
+            "pluginId": "cordova-plugin-networkinterface",
+            "clobbers": [
+                "window.networkinterface"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "com-badrit-macaddress": "0.2.0",
+        "cordova-plugin-networkinterface": "1.0.8"
+    }
+}

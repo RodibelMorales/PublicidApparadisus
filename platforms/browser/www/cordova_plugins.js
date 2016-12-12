@@ -38,6 +38,22 @@ module.exports = [
         "id": "cordova-plugin-device.DeviceProxy",
         "pluginId": "cordova-plugin-device",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-networkinterface/www/networkinterface.js",
+        "id": "cordova-plugin-networkinterface.networkinterface",
+        "pluginId": "cordova-plugin-networkinterface",
+        "clobbers": [
+            "window.networkinterface"
+        ]
+    },
+    {
+        "file": "plugins/com-badrit-macaddress/www/MacAddress.js",
+        "id": "com-badrit-macaddress.MacAddress",
+        "pluginId": "com-badrit-macaddress",
+        "clobbers": [
+            "window.MacAddress"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -45,7 +61,8 @@ module.exports.metadata =
 {
     "com-badrit-macaddress": "0.2.0",
     "cordova-plugin-inappbrowser": "1.3.0",
-    "cordova-plugin-device": "1.1.3"
+    "cordova-plugin-device": "1.1.3",
+    "cordova-plugin-networkinterface": "1.0.8"
 }
 // BOTTOM OF METADATA
 });

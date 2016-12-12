@@ -159,10 +159,19 @@
         "is_top_level": true,
         "variables": {}
     },
-    "com-badrit-macaddress": {
+    "cordova-plugin-networkinterface": {
         "source": {
             "type": "registry",
-            "id": "com-badrit-macaddress@~0.2.0"
+            "id": "cordova-plugin-networkinterface"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com-badrit-macaddress": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mohamed-salah/MacAddress.git",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}
