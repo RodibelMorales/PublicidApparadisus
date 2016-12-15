@@ -52,10 +52,12 @@
       //Generar Info
       $(document).ready(function(){
         $('#carousel-publicidad').carousel()
-        checkAreaId();
-        //setInterval('actualizaDom()',1000);
+        //checkAreaId();
+        setTimeout('checkAreaId()',1000);
+        setInterval('actualizaDom()',3000);
+
       }); 
-          var urlServer="http://192.168.1.124/"; //Url del servidor
+          var urlServer="http://192.168.1.97/"; //Url del servidor
           //Ajax que envia la peticon cada que se abra la pagina
           //Setinterval para verificar si hay cambios en la base de datos
           //var inicio =setTimeout(checkAreaId,1000);
@@ -76,6 +78,7 @@
                       "areaDevice":areaDevice,
                       "fecha"    :fecha
                     }
+                    //If que se ejecuta cuando carga la aplicacion y trae datos por default
                     if (areaDevice==1) {
                       /*Ajax para la peticion de informacion general*/
                       $.ajax({
@@ -86,54 +89,45 @@
                         dataType:"html",
                         success: function(data){
                           var jm=JSON.parse(data);
-
                           var fechadb= jm.agregado;
-                          var lastupdate =localStorage.getItem("update");
-                          if(localStorage.getItem("update")===null){
-                              window.localStorage.setItem("update",fechadb);
-                          }else{}
                           var id_paquete=jm.id_paquetete;
-
-                          if(fechadb>lastupdate){
+                          var lastupdate =localStorage.getItem("update");
+                          //Si no existe registro de hora se crea uno
+                          if(localStorage.getItem("update")===null){
+                            window.localStorage.setItem("update",fechadb);
                             $.ajax({
                               async:true,
                               type: "POST",
                               url: urlServer+"serverApparadisus/getData/diaposJson.php",
-                              data:"areaDevice="+localStorage.getItem("Area",areaDevice),
+                              data:"areaDevice="+localStorage.getItem("Area"),
                               dataType:"html",
                               success:function(data){
+                                //Agremos Elementos al slider
                                 $("#data").html(data);
-
-                                var eliminaFechaLocal =localStorage.removeItem("update");
-                                var actualiza =localStorage.setItem("update",fechadb); 
-                                alert("Nueva Fecha:"+actualiza);
-
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
                               }
                             });
-
-                              
                           }else{
-                            console.log("sin cambios");
+                          //Si existe el item update se busca la info y a lo ultimo se actualiza la fecha de update
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+areaDevice,
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
                           }
-                          setTimeout('checkAreaId()',1000);
-                          console.log("fechas 1:"+lastupdate);
-                          console.log("fechas 2:"+fechadb);
                         }
                       });
-                    }else{ 
-                    }
-                }
-              });
-          };
-
-          function actualizaDom(){
-              var areaDevice=localStorage.getItem("Area");
-              var dataSend={
-                    "areaDevice":areaDevice,
-                    "fecha"    :fecha
-                  }
-              if (areaDevice==1) {        
-
+                      /*Finaliza ajax*/
+                    }else{
                       /*Ajax para la peticion de informacion general*/
                       $.ajax({
                         async:  true,
@@ -142,21 +136,164 @@
                         data: dataSend,
                         dataType:"html",
                         success: function(data){
-                          var jm=JSON.parse(data)
+                          var jm=JSON.parse(data);
                           var fechadb= jm.agregado;
                           var id_paquete=jm.id_paquetete;
-
-                          if(fecha==null){
-
-                          }else if (fecha >fechadb){
-                            console.log("nueva actualizacion");
+                          var lastupdate =localStorage.getItem("update");
+                          //Si no existe registro de hora se crea uno
+                          if(localStorage.getItem("update")===null){
+                            window.localStorage.setItem("update",fechadb);
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+localStorage.getItem("Area"),
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
                           }else{
-                            console.log("no hacer nada");
+                            $.ajax({
+                              async:true,
+                              type: "POST",
+                              url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                              data:"areaDevice="+localStorage.getItem("Area",areaDevice),
+                              dataType:"html",
+                              success:function(data){
+                                //Agremos Elementos al slider
+                                $("#data").html(data);
+                                //Agrego nuevamente la hora del ultimo registro
+                                window.localStorage.setItem("update",fechadb);
+                              }
+                            });
                           }
                         }
                       });
-                    }else{ 
                     }
+                }
+              });
+          };
+
+          function actualizaDom(){
+            var macDispositivo =localStorage.getItem("MacIOS");
+            var lastupdate =localStorage.getItem("update");
+              $.ajax({
+                type: "POST",
+                url: urlServer+"serverApparadisus/getData/checkInfo.php",
+                data: "macDispositivo="+macDispositivo,
+                dataType:"html",
+                success: function(data) 
+                {
+                    var infoJson=JSON.parse(data); //parseo la informacion
+                    var mac = infoJson[0].mac;
+                    var areaDevice = infoJson[0].area_id;
+                    var dataSend={"areaDevice":areaDevice,"fecha":fecha} //Info de la base de datos
+                    var localdatasend={"areaDevice":"1","fecha":fecha}
+                    var areaLocalstorage= localStorage.getItem("Area");
+                    //Verifico si el area en localstorage es igual al de la DB
+                    if(areaDevice==areaLocalstorage){
+                    }else{
+                      //Elimino area por default
+                      window.localStorage.removeItem("Area");
+                      //Creo nuevamente el area con el dato de la base de datos
+                      window.localStorage.setItem("Area",areaDevice);
+                      location.reload();
+                    }
+                    if (areaDevice==1) {
+                        /*Ajax Verificar si hay cambios en la tabla multimedia*/
+                        $.ajax({
+                          async:  true,
+                          type: "POST",
+                          url: urlServer+"serverApparadisus/getData/checkMultimedia.php",
+                          data: dataSend,
+                          dataType:"html",
+                          success: function(data){
+                            var jm=JSON.parse(data);
+                            var fechadb= jm.agregado;
+                            var id_paquete=jm.id_paquetete;
+                            //Si no existe registro de hora se crea uno
+                            if(localStorage.getItem("update")===null){
+                                window.localStorage.setItem("update");
+                            }else{}
+
+
+                            if(fechadb>lastupdate){
+                              $.ajax({
+                                async:true,
+                                type: "POST",
+                                url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                                data:"areaDevice="+localStorage.getItem("Area"),
+                                dataType:"html",
+                                success:function(data){
+                                  //Agremos Elementos al slider
+                                  $("#data").html(data);
+
+                                  //Elimino la fecha y hora anterior 
+                                  window.localStorage.removeItem("update");
+                                  //Agrego nuevamente la hora del ultimo registro
+                                  window.localStorage.setItem("update",fechadb);
+                                  console.log("Actualizacion Realizada");
+                                  location.reload();
+                                }
+                              });
+                            }else{
+                              console.log("sin cambios el area es la default");
+                            }
+                            
+                          }
+                        });
+                    }else{
+                        $.ajax({
+                          async:  true,
+                          type: "POST",
+                          url: urlServer+"serverApparadisus/getData/checkMultimedia.php",
+                          data: dataSend,
+                          dataType:"html",
+                          success: function(data){
+                            var jm=JSON.parse(data);
+                            var fechadb= jm.agregado;
+                            var id_paquete=jm.id_paquetete;
+                            //Si no existe registro de hora se crea uno
+                            if(localStorage.getItem("update")===null){
+                                window.localStorage.setItem("update",fechadb);
+                            }else{}
+
+                            
+                            if(fechadb>lastupdate){
+                              $.ajax({
+                                async:true,
+                                type: "POST",
+                                url: urlServer+"serverApparadisus/getData/diaposJson.php",
+                                data:"areaDevice="+localStorage.getItem("Area"),
+                                dataType:"html",
+                                success:function(data){
+                                  //Agremos Elementos al slider
+                                  $("#data").html(data);
+                                  //Elimino la fecha y hora anterior 
+                                  window.localStorage.removeItem("update");
+                                  //Agrego nuevamente la hora del ultimo registro
+                                  window.localStorage.setItem("update",fechadb);
+                                  console.log("Actualizacion detectada");
+                                  location.reload();
+                                }
+                              });
+
+                              
+                            }else{
+                              console.log("sin cambios usando set interval");
+                            }
+                            
+                          }
+                        });
+                    }
+
+                }
+              });
+
           }
 
     </script>
