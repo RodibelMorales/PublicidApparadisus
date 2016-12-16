@@ -21,9 +21,9 @@
     <feature name="networkinterface">
         <param name="ios-package" onload="true" value="CDVNetworkInterface" />
     </feature>
-    <name>appParadisus</name>
-    <description>Hello World sample application that responds to the deviceready event.</description>
-    <author email="support@phonegap.com" href="http://phonegap.com">PhoneGap Team</author>
+    <name>Paradisus PublicidApp</name>
+    <description>PublicidApp Hotel Paradisus Playa Del Carmen.</description>
+    <author email="contacto@vagabundomx.com" href="http://www.vagabundomx.com">VagabundoMX | Rodibel Morales</author>
     <content src="index.html" />
     <icon src="icon.png" />
     <access origin="*" />
@@ -75,4 +75,5 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="android-minSdkVersion" value="14" />
+    <preference name="orientation" value="landscape" />
 </widget>

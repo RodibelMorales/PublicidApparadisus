@@ -6,14 +6,12 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--Estilos reset para navegadores-->
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <!--Estilos custom para sustituir estilos de materialize-->
     <link rel="stylesheet" href="css/style.css">
     <title>Paradisus</title>
-
 </head>
 <body>
     <header>
@@ -38,12 +36,9 @@
     <script type="text/javascript" src="js/index.js"></script>
     <!--<script src="js/fancywebsocket.js"></script>-->
     <script type="text/javascript">
-
-      
       app.initialize();
       //Funciones Temporales
       var fecha=null;
-
       $("#removelocal").click(function(){
         localStorage.clear();
         alert("limpio");
@@ -51,17 +46,15 @@
       $("#datacontent").addClass("json"+localStorage.getItem("MacIOS")+"");
       //Generar Info
       $(document).ready(function(){
-        $('#carousel-publicidad').carousel()
+        $('#carousel-publicidad').carousel();
+
         //checkAreaId();
         setTimeout('checkAreaId()',1000);
         setInterval('actualizaDom()',3000);
-
       }); 
           var urlServer="http://192.168.1.97/"; //Url del servidor
           //Ajax que envia la peticon cada que se abra la pagina
           //Setinterval para verificar si hay cambios en la base de datos
-          //var inicio =setTimeout(checkAreaId,1000);
-          
           function checkAreaId(){
             var macDispositivo =localStorage.getItem("MacIOS");
               $.ajax({
@@ -177,7 +170,6 @@
                 }
               });
           };
-
           function actualizaDom(){
             var macDispositivo =localStorage.getItem("MacIOS");
             var lastupdate =localStorage.getItem("update");
@@ -219,8 +211,7 @@
                             if(localStorage.getItem("update")===null){
                                 window.localStorage.setItem("update");
                             }else{}
-
-
+                            //Validamos si hay registros nuevos para actualizar
                             if(fechadb>lastupdate){
                               $.ajax({
                                 async:true,
@@ -231,7 +222,6 @@
                                 success:function(data){
                                   //Agremos Elementos al slider
                                   $("#data").html(data);
-
                                   //Elimino la fecha y hora anterior 
                                   window.localStorage.removeItem("update");
                                   //Agrego nuevamente la hora del ultimo registro
@@ -241,9 +231,13 @@
                                 }
                               });
                             }else{
+                              if($("#activePlay").is(".active")){
+                                $("video").get(0).play();
+                              }else{
+                                $("video").get(0).pause();
+                              }
                               console.log("sin cambios el area es la default");
                             }
-                            
                           }
                         });
                     }else{
@@ -261,8 +255,7 @@
                             if(localStorage.getItem("update")===null){
                                 window.localStorage.setItem("update",fechadb);
                             }else{}
-
-                            
+                            //Valida si hay nuevos registros para actualizar
                             if(fechadb>lastupdate){
                               $.ajax({
                                 async:true,
@@ -280,22 +273,22 @@
                                   console.log("Actualizacion detectada");
                                   location.reload();
                                 }
-                              });
-
-                              
+                              });                              
                             }else{
+                              if($("#activePlay").is(".active")){
+                                $("video").get(0).play();
+                              }else{
+                                $("video").get(0).pause();
+                              }
                               console.log("sin cambios usando set interval");
                             }
                             
                           }
                         });
                     }
-
                 }
               });
-
           }
-
     </script>
 </body>
 </html>

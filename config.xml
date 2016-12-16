@@ -1,10 +1,11 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>Paradisus</name>
+  <name>Paradisus PublicidApp</name>
   <description>PublicidApp Hotel Paradisus Playa Del Carmen.</description>
   <author href="http://www.vagabundomx.com" email="contacto@vagabundomx.com">VagabundoMX | Rodibel Morales</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="14"/>
+  <preference name="orientation" value="landscape"></preference>
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
   <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/>
   <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/>
