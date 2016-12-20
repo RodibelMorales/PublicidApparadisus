@@ -16,8 +16,8 @@
 <body>
     <header>
         <div class="logoletras">
-        <a href="index.html" id="removelocal">Cerrar sessión</a>
-          <img src="img/letras-paradisus.png" class="imgLetras"></div>
+           <img src="img/letras-paradisus.png" class="imgLetras">
+        </div>
     </header>
     <section  id="datacontent">
         <div id='carousel-publicidad' class='carousel slide' data-ride='carousel'>
@@ -27,7 +27,6 @@
             <a class='right carousel-control' href='#carousel-publicidad' data-slide='next'><span class='icon-next'></span></a>
         </div>
     </section>
-    <div id="hora"></div>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/jquery.mobile.custom.min.js"></script>
@@ -39,15 +38,10 @@
       app.initialize();
       //Funciones Temporales
       var fecha=null;
-      $("#removelocal").click(function(){
-        localStorage.clear();
-        alert("limpio");
-      });
       $("#datacontent").addClass("json"+localStorage.getItem("MacIOS")+"");
       //Generar Info
       $(document).ready(function(){
         $('#carousel-publicidad').carousel();
-
         //checkAreaId();
         setTimeout('checkAreaId()',1000);
         setInterval('actualizaDom()',3000);
