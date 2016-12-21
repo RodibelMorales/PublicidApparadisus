@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>Paradisus PublicidApp</name>
+  <name>Paradisus</name>
   <description>PublicidApp Hotel Paradisus Playa Del Carmen.</description>
   <author href="http://www.vagabundomx.com" email="contacto@vagabundomx.com">VagabundoMX | Rodibel Morales</author>
   <content src="index.html"/>
