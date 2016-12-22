@@ -16,7 +16,7 @@
 <body>
     <header>
         <div class="logoletras">
-           <img src="img/letras-paradisus.png" class="imgLetras">
+           <a href="#" id="clearStorage"><img src="img/letras-paradisus.png" class="imgLetras"></a>
         </div>
     </header>
     <section  id="datacontent">
@@ -37,6 +37,10 @@
     <script type="text/javascript">
       app.initialize();
       //Funciones Temporales
+      $("#clearStorage").click(function(){
+        localStorage.clear();
+        window.location.href = 'index.html';
+      });
       var fecha=null;
       $("#datacontent").addClass("json"+localStorage.getItem("MacIOS")+"");
       //Generar Info
@@ -45,6 +49,7 @@
         //checkAreaId();
         setTimeout('checkAreaId()',1000);
         setInterval('actualizaDom()',3000);
+
       }); 
           var urlServer="http://192.168.2.239/"; //Url del servidor
           //Ajax que envia la peticon cada que se abra la pagina
