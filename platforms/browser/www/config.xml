@@ -3,7 +3,7 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>Paradisus PublicidApp</name>
+    <name>Paradisus</name>
     <description>PublicidApp Hotel Paradisus Playa Del Carmen.</description>
     <author email="contacto@vagabundomx.com" href="http://www.vagabundomx.com">VagabundoMX | Rodibel Morales</author>
     <content src="index.html" />

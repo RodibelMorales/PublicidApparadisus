@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!--Estilos reset para navegadores-->
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <!--Estilos custom para sustituir estilos de materialize-->
@@ -16,8 +16,8 @@
 <body>
     <header>
         <div class="logoletras">
-        <a href="index.html" id="removelocal">Cerrar sessión</a>
-          <img src="img/letras-paradisus.png" class="imgLetras"></div>
+           <a href="#" id="clearStorage"><img src="img/letras-paradisus.png" class="imgLetras"></a>
+        </div>
     </header>
     <section  id="datacontent">
         <div id='carousel-publicidad' class='carousel slide' data-ride='carousel'>
@@ -27,9 +27,8 @@
             <a class='right carousel-control' href='#carousel-publicidad' data-slide='next'><span class='icon-next'></span></a>
         </div>
     </section>
-    <div id="hora"></div>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mobile.custom.min.js"></script>
     <script src="js/control_events.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
@@ -38,21 +37,21 @@
     <script type="text/javascript">
       app.initialize();
       //Funciones Temporales
-      var fecha=null;
-      $("#removelocal").click(function(){
+      $("#clearStorage").click(function(){
         localStorage.clear();
-        alert("limpio");
+        window.location.href = 'index.html';
       });
+      var fecha=null;
       $("#datacontent").addClass("json"+localStorage.getItem("MacIOS")+"");
       //Generar Info
       $(document).ready(function(){
         $('#carousel-publicidad').carousel();
-
         //checkAreaId();
         setTimeout('checkAreaId()',1000);
         setInterval('actualizaDom()',3000);
+
       }); 
-          var urlServer="http://192.168.1.97/"; //Url del servidor
+          var urlServer="http://192.168.0.9/"; //Url del servidor
           //Ajax que envia la peticon cada que se abra la pagina
           //Setinterval para verificar si hay cambios en la base de datos
           function checkAreaId(){
@@ -65,8 +64,8 @@
                 success: function(data) 
                 {
                     var infoJson=JSON.parse(data); //parseo la informacion
-                    var mac = infoJson[0].mac;
-                    var areaDevice = infoJson[0].area_id;
+                    var mac = infoJson.mac;
+                    var areaDevice = infoJson.area_id;
                     var dataSend={
                       "areaDevice":areaDevice,
                       "fecha"    :fecha
@@ -180,9 +179,12 @@
                 dataType:"html",
                 success: function(data) 
                 {
+                    
                     var infoJson=JSON.parse(data); //parseo la informacion
-                    var mac = infoJson[0].mac;
-                    var areaDevice = infoJson[0].area_id;
+
+                    var mac = infoJson.mac;
+                    var areaDevice = infoJson.area_id;
+                    console.log(areaDevice);
                     var dataSend={"areaDevice":areaDevice,"fecha":fecha} //Info de la base de datos
                     var localdatasend={"areaDevice":"1","fecha":fecha}
                     var areaLocalstorage= localStorage.getItem("Area");
@@ -234,7 +236,7 @@
                               if($("#activePlay").is(".active")){
                                 $("video").get(0).play();
                               }else{
-                                $("video").get(0).pause();
+                                //$("video").get(0).pause();
                               }
                               console.log("sin cambios el area es la default");
                             }
@@ -278,7 +280,7 @@
                               if($("#activePlay").is(".active")){
                                 $("video").get(0).play();
                               }else{
-                                $("video").get(0).pause();
+                                //$("video").get(0).pause();
                               }
                               console.log("sin cambios usando set interval");
                             }

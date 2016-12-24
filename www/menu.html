@@ -27,8 +27,8 @@
             <a class='right carousel-control' href='#carousel-publicidad' data-slide='next'><span class='icon-next'></span></a>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mobile.custom.min.js"></script>
     <script src="js/control_events.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
@@ -51,7 +51,7 @@
         setInterval('actualizaDom()',3000);
 
       }); 
-          var urlServer="http://192.168.0.9/"; //Url del servidor
+          var urlServer="http://192.168.2.239/"; //Url del servidor
           //Ajax que envia la peticon cada que se abra la pagina
           //Setinterval para verificar si hay cambios en la base de datos
           function checkAreaId(){
@@ -64,6 +64,7 @@
                 success: function(data) 
                 {
                     var infoJson=JSON.parse(data); //parseo la informacion
+                    
                     var mac = infoJson[0].mac;
                     var areaDevice = infoJson[0].area_id;
                     var dataSend={

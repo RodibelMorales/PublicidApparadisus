@@ -47,13 +47,13 @@
         z-index: 10;
         height: 80px;
     }
-footer {
-    display: block;
-    background: #7f7d86;
-    position: fixed;
-    width: 100%;
-    height: 160px;
-}
+    footer {
+        display: block;
+        background: #7f7d86;
+        position: fixed;
+        width: 100%;
+        height: 160px;
+    }
     .logoletras {
         margin: 0 auto;
         width: 10%;
@@ -69,7 +69,7 @@ footer {
     }
     .carousel {
         position: relative;
-        height: 708px !important;
+        height: 688px !important;
     }
     .carousel-inner {
         position: relative;
@@ -81,3 +81,22 @@ footer {
         height: 100%;
     }
     .imgPromos{width: 100%;height: 100% !important;}
+/*Estilos para el slider*/
+    .carousel-control.left {
+        background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0) 0,rgba(0,0,0,.0001) 100%) !important;
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%) !important;
+        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0, 0, 0, 0)),to(rgba(0,0,0,.0001))) !important;
+        background-image: linear-gradient(to right,rgba(0, 0, 0, 0) 0,rgba(0,0,0,.0001) 100%) !important;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1) !important;
+        background-repeat: repeat-x !important;
+    }
+    .carousel-control.right {
+        right: 0;
+        left: auto;
+        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0, 0, 0, 0) 100%) !important;
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%) !important;
+        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0, 0, 0, 0))) !important;
+        background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0, 0, 0, 0) 100%) !important;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1) !important;
+        background-repeat: repeat-x !important;
+    }
