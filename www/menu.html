@@ -63,7 +63,7 @@
                 dataType:"html",
                 success: function(data) 
                 {
-                    var infoJson[0]=JSON.parse(data); //parseo la informacion
+                    var infoJson=JSON.parse(data); //parseo la informacion
                     var mac = infoJson[0].mac;
                     var areaDevice = infoJson.area_id;
                     var dataSend={
