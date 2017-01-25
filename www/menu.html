@@ -65,7 +65,7 @@
                 {
                     var infoJson=JSON.parse(data); //parseo la informacion
                     var mac = infoJson[0].mac;
-                    var areaDevice = infoJson.area_id;
+                    var areaDevice = infoJson[0].area_id;
                     var dataSend={
                       "areaDevice":areaDevice,
                       "fecha"    :fecha
